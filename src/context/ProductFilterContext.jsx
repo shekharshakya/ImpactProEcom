@@ -32,6 +32,11 @@ const FilterContextProvide = ({ children }) => {
     dispatch({ type: "Get Filter Value", payload: { name, value } });
   };
 
+  // reset all Filter
+  const Resetfilter = () =>{
+dispatch({type:"Reset All Filter"})
+  }
+
   useEffect(() => {
     // dispatch({ type: "Get Filter product Data" });
     dispatch({ type: "Sorting product Data", payload: products });
@@ -46,7 +51,7 @@ const FilterContextProvide = ({ children }) => {
   }, [products]);
 
   return (
-    <FilterContext.Provider value={{ ...state, Sorting, filterEmployeedata }}>
+    <FilterContext.Provider value={{ ...state, Sorting, filterEmployeedata,Resetfilter }}>
       {children}
     </FilterContext.Provider>
   );

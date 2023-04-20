@@ -75,6 +75,8 @@ const ProductFilterReducer = (state, action) => {
       let temparyFilterData = [...all_filterData];
       const { category, company, color, max, min, price } = state.filter;
 
+     
+
       if (category !== "all") {
         temparyFilterData = temparyFilterData.filter((curEle) => {
           return curEle.category === category;
@@ -103,6 +105,15 @@ const ProductFilterReducer = (state, action) => {
         ...state,
         filterData: temparyFilterData,
       };
+
+      case "Reset All Filter":
+
+      console.log("Filter")
+      return{
+        ...state,
+        filterData:[...state.all_filterData]
+      }
+
 
     default:
       return {

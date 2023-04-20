@@ -10,7 +10,7 @@ const Products = () => {
     filterData,
     Sorting,
     all_filterData,
-    filterEmployeedata,
+    filterEmployeedata,Resetfilter,
     filter: { category, company, color, max, price, min },
   } = GlobalFilterContextHook();
 
@@ -126,7 +126,7 @@ const Products = () => {
               </div>
 
               <div className="reset-btn">
-                <button className="btn btn-danger w-100">Reset</button>
+                <button className="btn btn-danger w-100" onClick={Resetfilter}>Reset</button>
               </div>
             </div>
           </div>
