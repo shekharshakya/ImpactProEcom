@@ -1,0 +1,76 @@
+import { createContext, useContext, useEffect, useReducer } from "react";
+import reducer from "../reducer/AddToCartReducer";
+
+const CartContext = createContext();
+
+const getLocalecartData = () => {
+  // render data from localStorage
+  let updateCartData = localStorage.getItem("cartData");
+  if (updateCartData === []) {
+    return [];
+  } else {
+    return JSON.parse(updateCartData);
+  }
+};
+
+const initialstate = {
+  // cart: [],
+  cart: getLocalecartData(),
+  shippingPrice: 50000,
+};
+
+const CartProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialstate);
+
+  // Add to cart
+  const AddToCart = (amount, selectcolor, productsDetails) => {
+    dispatch({
+      type: "Add To Cart Items",
+      payload: { amount, selectcolor, productsDetails },
+    });
+  };
+
+  // remove cart item
+  const RemoveCartItem = (id) => {
+    dispatch({ type: "Remove Cart Item", payload: id });
+  };
+
+  // clear cart item
+  const ClearCart = () => {
+    dispatch({ type: "Clear Cart" });
+  };
+
+  const ShareProduct = (productid) => {
+    if (navigator.share) {
+      try {
+        navigator.share({
+          title: "MDN",
+          text: "Learn web development on MDN!",
+          url: `https://api.pujakaitem.com/api/products/${productid}`,
+        });
+        alert("MDN shared successfully");
+      } catch (err) {
+        alert(`Error: ${err}`);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // add data in localStorage
+    localStorage.setItem("cartData", JSON.stringify(state.cart));
+  }, [state.cart]);
+
+  return (
+    <CartContext.Provider
+      value={{ ...state, AddToCart, RemoveCartItem, ClearCart, ShareProduct }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+const GlobalProductCartContextHook = () => {
+  return useContext(CartContext);
+};
+
+export { CartContext, CartProvider, GlobalProductCartContextHook };
