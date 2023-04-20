@@ -57,6 +57,14 @@ const Header = () => {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/wishlist"
+                  className={splitPathName[1] === "wishlist" ? "active" : ""}
+                >
+                  <i class="fa fa-heart"></i>
+                </Link>
+              </li>
               <li className="countItem">
                 <Link
                   to="/cart"

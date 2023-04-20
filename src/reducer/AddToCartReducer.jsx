@@ -54,6 +54,15 @@ const AddToCartReducer = (state, action) => {
         cart: UpdateCartItem,
       };
 
+      case "Add To Wishlist":
+        let WishListProduct = action.payload;
+        
+        return {
+          ...state,
+          wishlist:[...state.wishlist,WishListProduct]
+        }
+
+
     case "Clear Cart":
       return {
         ...state,

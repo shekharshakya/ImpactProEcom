@@ -13,9 +13,21 @@ const getLocalecartData = () => {
   }
 };
 
+const getLocalewishlistData = () => {
+  // render data from localStorage
+  let updatewishlistData = localStorage.getItem("wishlistData");
+  if (updatewishlistData === []) {
+    return [];
+  } else {
+    return JSON.parse(updatewishlistData);
+  }
+};
+
 const initialstate = {
   // cart: [],
   cart: getLocalecartData(),
+  // wishlist: [],
+  wishlist: getLocalewishlistData(),
   shippingPrice: 50000,
 };
 
@@ -40,6 +52,7 @@ const CartProvider = ({ children }) => {
     dispatch({ type: "Clear Cart" });
   };
 
+  // share product
   const ShareProduct = (productid) => {
     if (navigator.share) {
       try {
@@ -55,14 +68,19 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const AddToWishList = (wishlistProduct) => {
+    dispatch({type:"Add To Wishlist",payload:wishlistProduct})
+  }
+
   useEffect(() => {
     // add data in localStorage
     localStorage.setItem("cartData", JSON.stringify(state.cart));
-  }, [state.cart]);
+    localStorage.setItem("wishlistData", JSON.stringify(state.wishlist))
+  }, [state.cart] [state.wishlist]);
 
   return (
     <CartContext.Provider
-      value={{ ...state, AddToCart, RemoveCartItem, ClearCart, ShareProduct }}
+      value={{ ...state, AddToCart, RemoveCartItem, ClearCart, ShareProduct, AddToWishList }}
     >
       {children}
     </CartContext.Provider>

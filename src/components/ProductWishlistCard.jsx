@@ -1,12 +1,8 @@
-import React from "react";
+import React from 'react';
 import { Link } from "react-router-dom";
 import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 
-const ProductCard = ({ product }) => {
-
-  const { AddToWishList} = GlobalProductCartContextHook();
-
-
+const ProductWishlistCard = ({product}) => {
   return (
     <div className="product-box" id={product.id}>
       <div className="product-card">
@@ -25,7 +21,7 @@ const ProductCard = ({ product }) => {
               <small>$96.00</small>${product.price}
             </div>
             <div className="product-links">
-              <a href="#" onClick={()=>AddToWishList(product)}>
+              <a href="#">
                 <i className="fa fa-heart"></i>
               </a>
               <a href="">
@@ -36,7 +32,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductWishlistCard
