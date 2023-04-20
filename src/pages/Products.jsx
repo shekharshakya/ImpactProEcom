@@ -4,7 +4,7 @@ import { GlobalProductContextHook } from "../context/ProductContext";
 import { GlobalFilterContextHook } from "../context/ProductFilterContext";
 
 const Products = () => {
-  const { isLoading } = GlobalProductContextHook();
+  const { isLoading, featureProducts } = GlobalProductContextHook();
 
   const {
     filterData,

@@ -8,6 +8,7 @@ const initialstate = {
   isLoading: false,
   isError: false,
   products: [],
+  featureProducts:[],
   productsDetails: {},
 };
 

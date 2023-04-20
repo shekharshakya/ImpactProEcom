@@ -5,6 +5,7 @@ import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 
 const Cart = () => {
   const { cart, ClearCart } = GlobalProductCartContextHook();
+  console.log(cart)
 
   if (cart.length === 0) {
     return <h2 className="text-center my-5">No Items In Cart</h2>;

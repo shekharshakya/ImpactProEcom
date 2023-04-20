@@ -5,8 +5,12 @@ import Team from "../components/Team";
 import Testimonial from "../components/Testimonial";
 import heroImg from "../img/home/hero-img.svg";
 import heroImgTwo from "../img/home/stats-img.svg";
+import { GlobalProductContextHook } from "../context/ProductContext";
+import ProductCard from "../components/ProductCard";
 
 const Home = () => {
+  const { isLoading, featureProducts } = GlobalProductContextHook();
+  console.log(featureProducts)
   return (
     <div>
       <section className="hero-section">
@@ -73,6 +77,24 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <section className="feature-sec section">
+        <div className="container">
+          <div className="row justify-content-center">
+            <h2 class="section-title">Feature Product</h2>
+            {
+              featureProducts.map((curEle, index) => {
+                return (
+                  <div className="col-lg-3">
+                    <ProductCard key={index} product={curEle} />
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+      </section>
+
       <section className="call-to-action section">
         <div className="container">
           <a href="">

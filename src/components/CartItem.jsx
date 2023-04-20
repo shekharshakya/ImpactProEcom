@@ -1,7 +1,8 @@
 import React from "react";
 import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 
-const CartItem = ({ id, name, amount, image, price, maxQty }) => {
+const CartItem = ({ id, name, amount, selectcolor, image, price, maxQty }) => {
+  console.log(selectcolor)
   const { RemoveCartItem } = GlobalProductCartContextHook();
 
   const qtyIncrease = () => {
@@ -12,14 +13,18 @@ const CartItem = ({ id, name, amount, image, price, maxQty }) => {
     // amount > 1 ? setamount(amount - 1) : setamount(1);
   };
   return (
-    <tr>
-      <td className="d-flex align-items-center font-weight-bolder">
+    <tr className="cartItemRow">
+      <td className="d-flex align-items-center font-weight-bolder gap-2">
         <div className="product-img">
           <img src={image} alt="" />
         </div>
-        <a href="#" className="text-dark text-hover-primary">
+       <div>
+       <a href="#" className="text-dark text-hover-primary">
           {name}
-        </a>
+        </a> 
+        <br />
+        <button type="button" style={{ backgroundColor: selectcolor }}></button>
+       </div>
       </td>
       <td className="text-center align-middle">
         <a

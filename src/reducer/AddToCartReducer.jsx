@@ -32,6 +32,7 @@ const AddToCartReducer = (state, action) => {
           id: productsDetails.id + selectcolor,
           name: productsDetails.name,
           amount: amount,
+          selectcolor: selectcolor,
           image: productsDetails.image[0].url,
           price: productsDetails.price,
           maxQty: productsDetails.stock,
