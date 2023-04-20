@@ -2,9 +2,15 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 
-const ProductWishlistCard = ({product}) => {
+const ProductWishlistCard = ({ product }) => {
+
+   const {RemoveWishListProduct} = GlobalProductCartContextHook();
+
   return (
     <div className="product-box" id={product.id}>
+      <div className="remove-btn" onClick={()=>{RemoveWishListProduct(product.id)}}>
+        <i className="fa-regular fa-circle-xmark"></i>
+      </div>
       <div className="product-card">
         <div className="badge">{product.company}</div>
         <div className="product-tumb">

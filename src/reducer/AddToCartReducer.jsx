@@ -62,6 +62,15 @@ const AddToCartReducer = (state, action) => {
           wishlist:[...state.wishlist,WishListProduct]
         }
 
+        case "Remove WishList Item":
+          let UpdateWishListItem = state.wishlist.filter((curEle)=>{
+            return curEle.id !== action.payload;
+          })
+
+          return {
+            ...state,
+            wishlist:UpdateWishListItem,
+          }
 
     case "Clear Cart":
       return {

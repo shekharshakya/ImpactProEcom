@@ -15,7 +15,7 @@ const WishLIst = () => {
         <section className="wishlist-section section">
             <div className="container">
                 <h2 className="section-title">Wish List</h2>
-                <div className="wislist-cover">
+                <div className="wislist-cover py-3">
                
                     <div className="row">
                         {

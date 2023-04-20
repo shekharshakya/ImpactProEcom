@@ -652,6 +652,15 @@ li.list-item {
 .product-box {
   padding-bottom: 22px;
   height: 100%;
+  position: relative;
+}
+.product-box .remove-btn{
+  position: absolute;
+  z-index: 1;
+  right: -14px;
+  top: -16px;
+  color: var(--color-secondary);
+  font-size: 1.2rem;
 }
 .product-section.section {
   padding-bottom: 80px;
