@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 import { GlobalProductContextHook } from "../context/ProductContext";
+import Star from "../components/Star";
 
 const ProductDetails = () => {
   const { productsDetails, ProductDetailsData, isLoading } =
@@ -41,6 +42,8 @@ const ProductDetails = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
+  console.log(productsDetails);
 
   return (
     <section className="product-details-section section">
@@ -83,15 +86,12 @@ const ProductDetails = () => {
             </div>
 
             <div className="ratings my-2">
-              <div className="stars d-flex">
+              <div className="stars">
                 <div className="theme-text mr-2">Product Ratings: </div>
-                <div>★</div>
-                <div>★</div>
-                <div>★</div>
-                <div>★</div>
-                <div>★</div>
+
                 <div className="ml-2">
-                  (4.5) {productsDetails.reviews} Reviews
+                  <Star star={productsDetails.stars} />(
+                  {productsDetails.reviews} Reviews)
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@ const ProductDetails = () => {
                 to="/cart"
                 className="btn btn-warning"
                 onClick={() => {
-                  AddToCart(amount,selectcolor, productsDetails);
+                  AddToCart(amount, selectcolor, productsDetails);
                 }}
               >
                 Add To Cart
