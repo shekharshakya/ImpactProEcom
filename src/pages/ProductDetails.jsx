@@ -42,9 +42,6 @@ const ProductDetails = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
-  console.log(productsDetails);
-
   return (
     <section className="product-details-section section">
       <div className="container">
@@ -81,7 +78,7 @@ const ProductDetails = () => {
                 className="shareProduct"
                 onClick={() => ShareProduct(productsDetails.id)}
               >
-                <i class="fa-solid fa-share"></i>
+                <i className="fa-solid fa-share"></i>
               </span>
             </div>
 

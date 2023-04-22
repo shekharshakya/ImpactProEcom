@@ -78,6 +78,19 @@ const AddToCartReducer = (state, action) => {
         cart: [],
       };
 
+    case "count cart items":
+      let cartItemCount = state.cart.reduce((initialValue, curEle) => {
+        let { amount } = curEle;
+        initialValue = initialValue + amount;
+        return initialValue;
+      }, 0);
+
+      console.log(cartItemCount);
+      return {
+        ...state,
+        totalCartItem: cartItemCount,
+      };
+
     default:
       return {
         state,

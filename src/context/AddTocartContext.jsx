@@ -28,6 +28,7 @@ const initialstate = {
   cart: getLocalecartData(),
   // wishlist: [],
   wishlist: getLocalewishlistData(),
+  totalCartItem: "",
   shippingPrice: 50000,
 };
 
@@ -49,7 +50,7 @@ const CartProvider = ({ children }) => {
 
   const RemoveWishListProduct = (id) => {
     dispatch({ type: "Remove WishList Item", payload: id });
-  }
+  };
 
   // clear cart item
   const ClearCart = () => {
@@ -73,18 +74,30 @@ const CartProvider = ({ children }) => {
   };
 
   const AddToWishList = (wishlistProduct) => {
-    dispatch({ type: "Add To Wishlist", payload: wishlistProduct })
-  }
+    dispatch({ type: "Add To Wishlist", payload: wishlistProduct });
+  };
 
   useEffect(() => {
     // add data in localStorage
     localStorage.setItem("cartData", JSON.stringify(state.cart));
-    localStorage.setItem("wishlistData", JSON.stringify(state.wishlist))
+    localStorage.setItem("wishlistData", JSON.stringify(state.wishlist));
   }, [state.cart][state.wishlist]);
+
+  useEffect(() => {
+    dispatch({ type: "count cart items" });
+  }, [state.cart]);
 
   return (
     <CartContext.Provider
-      value={{ ...state, AddToCart, RemoveCartItem, ClearCart, ShareProduct, RemoveWishListProduct, AddToWishList }}
+      value={{
+        ...state,
+        AddToCart,
+        RemoveCartItem,
+        ClearCart,
+        ShareProduct,
+        RemoveWishListProduct,
+        AddToWishList,
+      }}
     >
       {children}
     </CartContext.Provider>

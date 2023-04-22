@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 
 const Header = () => {
+  const { totalCartItem } = GlobalProductCartContextHook();
   const loaction = useLocation();
   const pathName = loaction.pathname;
   const splitPathName = pathName.split("/");
@@ -62,7 +64,7 @@ const Header = () => {
                   to="/wishlist"
                   className={splitPathName[1] === "wishlist" ? "active" : ""}
                 >
-                  <i class="fa fa-heart"></i>
+                  <i className="fa fa-heart"></i>
                 </Link>
               </li>
               <li className="countItem">
@@ -71,7 +73,7 @@ const Header = () => {
                   className={splitPathName[1] === "cart" ? "active" : ""}
                 >
                   <i className="fa-solid fa-cart-shopping"></i>
-                  <span>2</span>
+                  <span>{totalCartItem}</span>
                 </Link>
               </li>
             </ul>

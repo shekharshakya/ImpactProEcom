@@ -2,7 +2,6 @@ import React from "react";
 import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 
 const CartItem = ({ id, name, amount, selectcolor, image, price, maxQty }) => {
-  console.log(selectcolor)
   const { RemoveCartItem } = GlobalProductCartContextHook();
 
   const qtyIncrease = () => {
@@ -18,13 +17,16 @@ const CartItem = ({ id, name, amount, selectcolor, image, price, maxQty }) => {
         <div className="product-img">
           <img src={image} alt="" />
         </div>
-       <div>
-       <a href="#" className="text-dark text-hover-primary">
-          {name}
-        </a> 
-        <br />
-        <button type="button" style={{ backgroundColor: selectcolor }}></button>
-       </div>
+        <div>
+          <a href="#" className="text-dark text-hover-primary">
+            {name}
+          </a>
+          <br />
+          <button
+            type="button"
+            style={{ backgroundColor: selectcolor }}
+          ></button>
+        </div>
       </td>
       <td className="text-center align-middle">
         <a
