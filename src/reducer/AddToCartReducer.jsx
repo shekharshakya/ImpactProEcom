@@ -18,7 +18,7 @@ const AddToCartReducer = (state, action) => {
             };
           } else {
             return {
-              curEle,
+              ...curEle,
             };
           }
         });
@@ -54,23 +54,23 @@ const AddToCartReducer = (state, action) => {
         cart: UpdateCartItem,
       };
 
-      case "Add To Wishlist":
-        let WishListProduct = action.payload;
-        
-        return {
-          ...state,
-          wishlist:[...state.wishlist,WishListProduct]
-        }
+    case "Add To Wishlist":
+      let WishListProduct = action.payload;
 
-        case "Remove WishList Item":
-          let UpdateWishListItem = state.wishlist.filter((curEle)=>{
-            return curEle.id !== action.payload;
-          })
+      return {
+        ...state,
+        wishlist: [...state.wishlist, WishListProduct],
+      };
 
-          return {
-            ...state,
-            wishlist:UpdateWishListItem,
-          }
+    case "Remove WishList Item":
+      let UpdateWishListItem = state.wishlist.filter((curEle) => {
+        return curEle.id !== action.payload;
+      });
+
+      return {
+        ...state,
+        wishlist: UpdateWishListItem,
+      };
 
     case "Clear Cart":
       return {
