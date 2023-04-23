@@ -29,7 +29,8 @@ const initialstate = {
   // wishlist: [],
   wishlist: getLocalewishlistData(),
   totalCartItem: "",
-  shippingPrice: 50000,
+  subtotal: "",
+  shippingPrice: 50,
 };
 
 const CartProvider = ({ children }) => {
@@ -84,6 +85,7 @@ const CartProvider = ({ children }) => {
   }, [state.cart][state.wishlist]);
 
   useEffect(() => {
+    dispatch({ type: "sub total price" });
     dispatch({ type: "count cart items" });
   }, [state.cart]);
 

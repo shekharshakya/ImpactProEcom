@@ -10,7 +10,6 @@ import ProductCard from "../components/ProductCard";
 
 const Home = () => {
   const { isLoading, featureProducts } = GlobalProductContextHook();
-  console.log(featureProducts);
   return (
     <div>
       <section className="hero-section">

@@ -4,7 +4,8 @@ import CartItem from "../components/CartItem";
 import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 
 const Cart = () => {
-  const { cart, ClearCart } = GlobalProductCartContextHook();
+  const { cart, ClearCart, subtotal, shippingPrice } =
+    GlobalProductCartContextHook();
 
   if (cart.length === 0) {
     return <h2 className="text-center my-5">No Items In Cart</h2>;
@@ -47,14 +48,21 @@ const Cart = () => {
               </table>
             </div>
           </div>
-          <div className="clear-cart mb-4">
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={ClearCart}
-            >
-              Clear Cart
-            </button>
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="clear-cart mb-4">
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={ClearCart}
+              >
+                Clear Cart
+              </button>
+            </div>
+            <div className="total-price">
+              <p>Subtotal : ${subtotal}</p>
+              <p>Shipping fee : ${shippingPrice}</p>
+              <p>Total Pay : ${subtotal + shippingPrice}</p>
+            </div>
           </div>
         </div>
       </section>
