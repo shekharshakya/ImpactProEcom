@@ -11,22 +11,28 @@ import Cart from "./pages/Cart";
 import ProductDetails from "./pages/ProductDetails";
 import WishLIst from "./pages/WishLIst";
 import Error from "./pages/Error";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Header />
+        <ScrollToTop />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/service" element={<Service />} />
           <Route exact path="/product" element={<Products />} />
-          <Route exact path="/product-details/:id" element={<ProductDetails />} />
+          <Route
+            exact
+            path="/product-details/:id"
+            element={<ProductDetails />}
+          />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/wishlist" element={<WishLIst />} />
-          <Route path="*" component={<Error/>}/>
+          <Route path="*" component={<Error />} />
         </Routes>
         <Footer />
       </BrowserRouter>
