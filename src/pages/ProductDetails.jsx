@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import ReactImageMagnify from 'react-image-magnify';
 import { GlobalProductCartContextHook } from "../context/AddTocartContext";
 import { GlobalProductContextHook } from "../context/ProductContext";
 import Star from "../components/Star";
@@ -62,11 +63,26 @@ const ProductDetails = () => {
               </div>
               <div className="col-md-10">
                 <div className="product-image">
-                  <img
+                  {/* <img
                     src={mainProductImg.url}
                     className="w-100"
                     alt={mainProductImg.filename}
-                  />
+                  /> */}
+                  <ReactImageMagnify {...{
+                    smallImage: {
+                      alt: 'Wristwatch by Ted Baker London',
+                      isFluidWidth: true,
+                      src: mainProductImg.url,
+                     
+                    },
+                    largeImage: {
+                      src: mainProductImg.url,
+                      width: 2000,
+                      height: 1000,
+                      
+                    },
+                    
+                  }} />
                 </div>
               </div>
             </div>
