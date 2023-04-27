@@ -13,7 +13,6 @@ const ProductReducer = (state, action) => {
       };
 
     case "Api Produc data":
-
       let featureProducts = action.payload.filter((curEle) => {
         return curEle.featured === true;
       })
@@ -26,6 +25,7 @@ const ProductReducer = (state, action) => {
         featureProducts: featureProducts,
       };
 
+
     case "Api  Product details data":
       return {
         ...state,
@@ -33,6 +33,15 @@ const ProductReducer = (state, action) => {
         isError: false,
         productsDetails: action.payload,
       };
+
+      case "Related Produc data":
+        
+        console.log(action.payload);
+
+        return{
+          ...state
+        };
+
     default:
       return state;
   }

@@ -39,12 +39,23 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
+  const RelatedProduct =  async (Api) => {
+    dispatch({ type: "Api is loading" });
+    try {
+      const res = await axios.get(Api);
+      const relatedProductData = await res.data;
+      dispatch({ type: "Related Produc data", payload: relatedProductData });
+    } catch (error) {
+      dispatch({ type: "Api error" });
+    }
+  };
+
   useEffect(() => {
     ProductApiData(Api);
   }, []);
 
   return (
-    <ProductContext.Provider value={{ ...state, ProductDetailsData }}>
+    <ProductContext.Provider value={{ ...state, ProductDetailsData,RelatedProduct }}>
       {children}
     </ProductContext.Provider>
   );

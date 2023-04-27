@@ -6,7 +6,7 @@ import { GlobalProductContextHook } from "../context/ProductContext";
 import Star from "../components/Star";
 
 const ProductDetails = () => {
-  const { productsDetails, ProductDetailsData, isLoading } =
+  const { productsDetails, ProductDetailsData, isLoading, RelatedProduct } =
     GlobalProductContextHook();
 
   const { AddToCart, ShareProduct } = GlobalProductCartContextHook();
@@ -38,7 +38,11 @@ const ProductDetails = () => {
 
   useEffect(() => {
     ProductDetailsData(`${Api}?id=${id}`);
+    
   }, []);
+  useEffect(()=>{
+    RelatedProduct();
+  },[])
 
   if (isLoading) {
     return <div>Loading...</div>;
