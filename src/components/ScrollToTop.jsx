@@ -24,7 +24,7 @@ const ScrollToTop = () => {
         style={{ display: visible ? "flex" : "none" }}
         onClick={ScrollToTop}
       >
-        <i class="fa-solid fa-sort-up"></i>
+        <i className="fa-solid fa-sort-up"></i>
       </div>
     </>
   );

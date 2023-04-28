@@ -9,6 +9,7 @@ const initialstate = {
   isError: false,
   products: [],
   featureProducts:[],
+  relatedProduct:[],
   productsDetails: {},
 };
 
@@ -39,15 +40,17 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
-  const RelatedProduct =  async (Api) => {
+  const RelatedProduct =  async (category) => {
     dispatch({ type: "Api is loading" });
     try {
       const res = await axios.get(Api);
       const relatedProductData = await res.data;
-      dispatch({ type: "Related Produc data", payload: relatedProductData });
+      dispatch({ type: "Related Produc data", payload: {relatedProductData,category} });
+      console.log(relatedProductData,category)
     } catch (error) {
       dispatch({ type: "Api error" });
     }
+  
   };
 
   useEffect(() => {

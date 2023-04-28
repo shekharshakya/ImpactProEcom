@@ -95,9 +95,7 @@ const AddToCartReducer = (state, action) => {
         initialValue = initialValue + price * amount;
         return initialValue;
       }, 0);
-
-      console.log(subTotalPrice);
-
+      
       return {
         ...state,
         subtotal: subTotalPrice,
